@@ -20,7 +20,7 @@
 
 
 🔄 To Review
-- strscmp(x, "Deposit") == 0 //means-> will compare entire string for 0 difference, not character
+- strcmp(x, "Deposit") == 0 //means-> will compare entire string for 0 difference, not character
 
  -scanf("%s", words); // means -> whatever user inpur (e.g "Deposit"), it's gonna store as {'D','e','p''o','s','i','t',\0} (not like array of strings)
 
@@ -83,7 +83,38 @@ while (token != NULL)
 
 ----
 
-## Day 2 – 
+## Day 2.1 – Caesar cipher
+
+✅ Worked
+- int i; cipher[i] = '\0' ---> any garbage will be replaced with null terminator;
+
+❌ Failed
+- int output_cipher (char x) //means parameter = single character 'H'  vs   int output_cipher (char * x) //means parameter = string ("HELLO")
+- scanf("%i", &key) --> must use '&' ; scanf("%s", text) --> array of strings without '&' ; scanf(" %c", &c); --> for chars must insert space + '&'
+
+💡 Insight
+- int index = x[i] - 'A'; ---> internally in C  any characher = integer, so even it doesn't make sense, it's applicable to make math with letters and get number;
+-
+
+🔄 To Review
+- change input encryption logic (not single word, but multiple)
+-
+
+🧩 Code Snippets
+
+#1 (to insert separate letters into array, not words)
+char letters[3];
+printf("Enter 3 letters: ");
+scanf(" %c %c %c", &letters[0], &letters[1], &letters[2]);
+
+#2 (to insert each integer separately and store it into array)
+int arr[3];
+printf("Enter 3 integers: ");
+scanf("%d %d %d", &arr[0], &arr[1], &arr[2]);
+
+----
+
+## Day 2.2 – 
 
 ✅ Worked
 -
