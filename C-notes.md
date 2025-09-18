@@ -62,6 +62,7 @@ char history[100][20]; // store up to 100 commands
 int history_index = 0;
 
 scanf("%s", words); //reads 1 command and storing in buffer _words_
+
 strcpy(history[history_index++], words); //copies the string from _words_
 //E.G -> words = "deposit" -> strcpy(history[0], words); → now history[0] = "deposit".
 
@@ -114,25 +115,57 @@ scanf("%d %d %d", &arr[0], &arr[1], &arr[2]);
 
 ----
 
-## Day 2.2 – 
+## Day 2.2 – Student grade lookup (not finished yet)
 
 ✅ Worked
 -
 - 
 
 ❌ Failed
-- 
+- scanf will be crazy if you input 2 arguments (e.g string) --> MUST use only 1 argument
 - 
 
 💡 Insight
-- 
-- 
+- If you have an array of floats (e.g float grades[5]), then to create workable function aroun this array --> must add format like this $void update_grades(float y[], int size)$ and to call it -> $update_grades(grades, 5)$ 
+- char names[10] = array can hold up to 10 chars ('A', 'B' etc); char names[10][50] = can hold up to 10 strings that can be up to 50 characters each --> "Artur Teplov", "John Doe".
 
 🔄 To Review
-- 
+- float grades [10][5] --> grades[0][0] first grade of first student ; grades[0][1] --> 2nd grade of first student etc
 -
 
 🧩 Code Snippets
+
+-----
+
+## Day 2.3 – Struct_exercises
+
+✅ Worked
+- declaring & printing struct function outside & inside of main
+-using for loop to iterate over each float array inside of struct, and afterwards giving output whehn fucntion is called (inside of main)
+
+❌ Failed
+- when calling a fucntion in $printf$ (e.g highest(student1.grades, 5)) -> must match input of that function, e.g as float array here (float highest(float x[], int size1)) //otherwise compiler will complain.
+-
+
+💡 Insight
+-if the function has output value, inside of the function always must be $return$ - no exceptions.
+-structs are good to combine different data types like i.e chars & floats
+
+🔄 To Review
+-
+-
+
+🧩 Code Snippets
+
+struct Student {
+    char name [50];
+    float grades [5];
+};
+int main()
+{
+struct Student student1;
+strcpy (student1.name, "ARTUR TEPLOV");
+}
 
 
 
