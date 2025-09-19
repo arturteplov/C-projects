@@ -169,6 +169,82 @@ strcpy (student1.name, "ARTUR TEPLOV");
 
 
 
+----
+## Day 3 – Opening a file + sorting integers there
+
+✅ Worked
+- FILE * x = fopen (argv[1], "r") can open the file, returns NULL if non-existent
+- qsort (numbers, counter, sizeof(int), cmpfunc) --> can sort input values however you want
+
+❌ Failed
+-a bit lack of understanding what's the sense of cmpfunc
+-
+
+💡 Insight
+- fscanf(x, "%d", &numbers[counter]) == 1)) --> reads the file and can store in array (i.e numbers[1000])
+-
+
+🔄 To Review
+- in qsort -> cmpfunc function must be reviewd 1 more time
+- instead of integers, try strings + some custom case
+
+
+🧩 Code Snippets
+//#1 Ascending (small → big) 3, 7 → -4 → negative → 3 before 7
+int cmp_asc(const void *a, const void *b) {
+    return (*(int*)a - *(int*)b);
+}
+
+//#2 Descending (big → small) 3, 7 → 4 → positive → 3 after 7.
+int cmp_desc(const void *a, const void *b) {
+    return (*(int*)b - *(int*)a);
+}
+
+//#3 Absolute Value Order --> Sorts like [-9, -2, 3, 10] → -2, 3, -9, 10.
+#include <math.h>
+int cmpfunc (const void *a, const void *b) {
+    int x = abs(*(int*)a);
+    int y = abs(*(int*)b);
+    return x - y;
+}
+
+//#4 By Last Digit -_> 32, 47, 15 → sorted as 32 (2), 15 (5), 47 (7).
+int cmp_last_digit(const void *a, const void *b) {
+    int x = *(int*)a % 10;
+    int y = *(int*)b % 10;
+    return x - y;
+}
+
+//#5  Odd First, Even Later
+int cmp_odd_even(const void *a, const void *b) {
+    int x = *(int*)a;
+    int y = *(int*)b;
+    return (x % 2) - (y % 2);
+}
+
+
+//#6  Strings (Alphabetical):
+int cmp_alpha(const void *a, const void *b) {
+    return strcmp(*(char**)a, *(char**)b);
+}
+By string length:
+
+int cmp_len(const void *a, const void *b) {
+    return strlen(*(char**)a) - strlen(*(char**)b);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
