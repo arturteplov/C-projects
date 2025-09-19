@@ -170,7 +170,7 @@ strcpy (student1.name, "ARTUR TEPLOV");
 
 
 ----
-## Day 3 – Opening a file + sorting integers there
+## Day 3 – Opening a file + sorting integers there 
 
 ✅ Worked
 - FILE * x = fopen (argv[1], "r") can open the file, returns NULL if non-existent
@@ -190,6 +190,10 @@ strcpy (student1.name, "ARTUR TEPLOV");
 
 
 🧩 Code Snippets
+//#0 
+   while ((fscanf(x, "%d", &numbers[counter]) == 1)) ---> to store strings/integers into array
+
+
 //#1 Ascending (small → big) 3, 7 → -4 → negative → 3 before 7
 int cmp_asc(const void *a, const void *b) {
     return (*(int*)a - *(int*)b);
@@ -222,17 +226,116 @@ int cmp_odd_even(const void *a, const void *b) {
     return (x % 2) - (y % 2);
 }
 
+//#6  STRINGS
 
-//#6  Strings (Alphabetical):
-int cmp_alpha(const void *a, const void *b) {
-    return strcmp(*(char**)a, *(char**)b);
-}
-By string length:
+//Alphabetic
 
-int cmp_len(const void *a, const void *b) {
-    return strlen(*(char**)a) - strlen(*(char**)b);
+int cmpfunc (const void*a, const void*b)
+{
+    return strcmp(*(const char * const *)a, *(const char * const *)b);
 }
 
+//By length
+int cmpfunc_len (const void*a, const void*b)
+{
+    const char *s1 = *(const char * const *)a;
+    const char *s2 = *(const char * const *)b;
+    if (strlen(s1) < strlen(s2)) return -1;
+    if (strlen(s1) > strlen(s2)) return 1;
+    return 0;
+}
+
+//#7 function for saving array into new file
+void save_sorted(char *arr[], int n) 
+{
+    // Open a file named "sorted.txt" in write mode ("w")
+    // "w" means: if the file exists → clear it; if not → create it.
+    FILE *fp = fopen("sorted.txt", "w");
+
+    // Always check if fopen worked.
+    // If fopen fails (e.g. no permissions, disk full, etc.), fp == NULL.
+    if (fp == NULL) {
+        perror("Error opening file"); // print system error message
+        return;                       // exit the function early
+    }
+
+    // Loop over all sorted elements in the array
+    for (int i = 0; i < n; i++) {
+        // Write each string into the file, followed by a newline
+        // "%s\n" → print string + newline
+        fprintf(fp, "%s\n", arr[i]);
+    }
+
+    // Close the file to make sure all data is flushed to disk
+    fclose(fp);
+}
+
+
+----
+
+## Day 4 – Opening a file -> reading strings + sorting them (alphab, by length)
+
+
+✅ Worked
+-  writing each string into a new file --->
+ for (int i = 0; i < n; i++) {
+        // "%s\n" → print string + newline
+        fprintf(fp, "%s\n", arr[i]); // Write each string into the file, followed by a newline
+    }
+
+❌ Failed
+-  Script is not case sensetive - not considering lowcase (i.e lowercase "tunnel" will come after "WORKS")
+-  to store strings it must be 2D array -> char words [100] [100]
+
+💡 Insight
+- perror = as printf but also automatically tells cause of error
+-
+
+🔄 To Review
+-  int cmpfunc (const void*a, const void*b) //comparative function for qsort
+{
+    return strcmp((const char*)a, (const char*)b);
+}
+-
+
+🧩 Code Snippets
+
+#1 if (fp == NULL) {
+        perror("Error opening file"); // print system error message
+        return;                       // exit the function early
+    
+
+#2 for (int i = 0; i < n; i++) {
+        // "%s\n" → print string + newline
+        fprintf(fp, "%s\n", arr[i]); // Write each string into the file, followed by a newline
+    }
+
+#3 FILE *fp = fopen("sorted.txt", "w");
+
+----
+
+## Day 4 – 
+
+✅ Worked
+-  
+
+❌ Failed
+-  
+-  
+
+💡 Insight
+- 
+-
+
+🔄 To Review
+-  
+-
+
+🧩 Code Snippets
+
+#1 
+
+----
 
 
 
