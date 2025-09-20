@@ -273,7 +273,7 @@ void save_sorted(char *arr[], int n)
 
 ----
 
-## Day 4 – Opening a file -> reading strings + sorting them (alphab, by length)
+## Day 4.1 – Opening a file -> reading strings + sorting them (alphab, by length)
 
 
 ✅ Worked
@@ -314,17 +314,17 @@ void save_sorted(char *arr[], int n)
 
 ----
 
-## Day 4 – 
+## Day 4.2 – Processing strings & integers to find the most frequent value
 
 ✅ Worked
--  
+-  2 for loops iterating 1 number/string with the following ones, and adding if clause so we can mathematically assing in new array counts -> counter[50] = {0}; 
 
 ❌ Failed
--  
--  
+-  this if (strcmp(names[i], names[j]) == 0) --> only works for strings (not integers) ; for integers it's directly match (if (numbers[i] == numbers[j]))
+-  for strings , must be used 2D array ---> i.e char names [50] [35]
 
 💡 Insight
-- 
+- int counter[50] = {0}; --> this means every value in this array will be equal 0;
 -
 
 🔄 To Review
@@ -333,10 +333,58 @@ void save_sorted(char *arr[], int n)
 
 🧩 Code Snippets
 
-#1 
+#1 _1_(FOR STRINGS) ---> It will count occurences
+
+for (int i = 0; i<voters ; i++ )
+    {
+        for (int j = 0; j <voters ; j++ )
+        {
+            if (strcmp(names[i], names[j]) == 0)
+            {
+                counter[i]++;   
+            }
+        }
+    }
+
+_2_ ----> Assuming that 1st element is the max and then if next element is higher (as counter), then new value will be assigned --> here out goal is just to figure out location that we will use to locate our desirable (most frequent) word/integer. 
+int max_index = 0; 
+    for (int i = 1; i < voters; i++)
+    {
+        if (counter[i] > counter[max_index])
+        {
+            max_index = i;
+        }
+    }
+
+    printf("%s\n", names[max_index]);
+
+    return 0;
 
 ----
+## Day 4.3/5 – 
 
+
+✅ Worked
+- 
+-
+
+❌ Failed
+-
+-
+
+💡 Insight
+- 
+-
+
+🔄 To Review
+- 
+-
+
+🧩 Code Snippets
+
+-
+
+----
 
 
 
