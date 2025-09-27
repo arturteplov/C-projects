@@ -1,0 +1,2 @@
+# (STEP 6 • Background) Every 10 minutes process queue (adjust absolute paths)
+*/10 * * * * cd /ABS/PATH/_autro_sender_v0 && /usr/bin/env PYTHONPATH=. /usr/bin/python3 scripts/worker.py >> logs/cron.log 2>&1

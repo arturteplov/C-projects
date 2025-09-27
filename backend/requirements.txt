@@ -1,0 +1,7 @@
+Flask>=2.3
+pytest>=7
+# Load .env files automatically (optional but recommended)
+python-dotenv>=1
+# Optional providers:
+# reportlab>=4  # for PDF generation (PDF_PROVIDER=REPORTLAB)
+# openai>=1     # for LLM provider (LLM_PROVIDER=OPENAI)

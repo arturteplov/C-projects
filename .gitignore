@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pytest_cache/
+*.egg-info/
+
+# Virtual environments & local config
+backend/.venv/
+.venv/
+backend/.env
+.env
+
+# Generated data & logs
+data/app.db
+data/resumes/
+logs/
+
+# Frontend build artifacts
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# OS/editor cruft
+.DS_Store
+*.log
+
+# Local docs (learning guides, scratch references)
+docs/
